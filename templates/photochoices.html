@@ -1,0 +1,13 @@
+{% if photos %}
+    <div class="list-group" id="photochoiceslg">
+        {% for photo in photos %}
+            <a href="javascript:viewPhoto('{{ "%s.%s" % (photo["Id_location"], format) }}');" class="list-group-item">
+                <h4>Lokace {{ photo["Id_location"] }}: {{ photo["Stamp"].strftime("%d.%m.%Y %H:%M:%S") }}</h4>
+                <p class="list-group-item-text">GSM: {{ photo["Longitude"] }}, {{ photo["Latitude"] }}</p>
+                <p class="list-group-item-text">Výška: {{ photo["Height"] }} m</p>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Toto zařízení nepořídilo zatím žádné fotografie.</p>
+{% endif %}

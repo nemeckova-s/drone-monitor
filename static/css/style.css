@@ -1,0 +1,81 @@
+html, body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.error-actions .btn {
+    margin-right: 10px;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+h2 {
+    text-align: center;
+}
+
+#left {
+    width: 30%;
+    float: left;
+    padding: 1%;
+}
+#left p {
+    font-weight: bold;
+    font-size: 10px;
+}
+#left #instructions {
+    margin-top: 3%;
+    text-align: justify;
+}
+
+#alert {
+    text-align: center;
+    margin-top: 2%;
+}
+#loading {
+    margin: auto;
+    margin-top: 4%;
+    display: none;
+}
+
+#renderCanvas, #camera {
+    width: 70%;
+    float: left;
+    height: 100%;
+}
+#renderCanvas {
+    touch-action: none;
+}
+#camera {
+    color: #ffffff;
+    background-color: #33334c;
+}
+#camera img {
+    display: block;
+    margin: auto;
+    max-width: 95%;
+    max-height: 95%;
+}
+#dronesbtns {
+    margin-top: 10px;
+}
+#chooselocationp {
+    text-align: center;
+    margin-top: 10px;
+}
+#photochoices, #dronepath {
+    max-height: 345px;
+    overflow-y: auto;
+}

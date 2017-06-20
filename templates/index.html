@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Drone Monitor</title>
+
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <script src="/static/js/jquery-3.2.0.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/babylon.custom.js"></script>
+    <script src="/static/js/poly2tri.min.js"></script>
+    <script src="/static/js/mylib.js"></script>
+    <script src="/static/js/threedscene.js"></script>
+    <script src="/static/js/index.js"></script>
+
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="left">
+        <h1>Drone monitor</h1>
+
+        <div class="btn-group" data-toggle="buttons" id="optionsbtns">
+            <label class="btn btn-primary active">
+                <input type="radio" name="options" value="map" id="mapbtn" autocomplete="off" checked>Mapa
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="options" value="camera" id="camerabtn" autocomplete="off">Kamera
+            </label>
+        </div>
+
+        <br>
+
+        {% if drones %}
+        <div class="btn-group" data-toggle="buttons" id="dronesbtns">
+            {% for drone in drones %}
+                <label class="btn btn-primary {{ "active" if drone["Id_drone"] == drones[0]["Id_drone"] else "" }}">
+                    <input type="radio" name="drones" value="{{ drone["Id_drone"] }}"
+                           id="drone{{ drone["Id_drone"] }}" autocomplete="off"
+                            {{ "checked" if drone["Id_drone"] == drones[0]["Id_drone"] else "" }}>{{ drone["Name"] if drone["Name"] else "Zařízení číslo %d" % drone["Id_drone"] }}
+                </label>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Žádná zařízení v databázi.</p>
+        {% endif %}
+
+        <p id="instructions">Pro přiblížení/oddálení v mapě použijte kolečko myši. Pro pohyb do stran slouží levé tlačítko myši při stisknuté klávese Ctrl. Levým tlačítkem myši nebo šipkami můžete mapou otáčet.</p>
+
+        <img id="loading" src="/static/images/ajax-loader.gif">
+        <p id="alert"></p>
+
+        <div id="photochoices"></div>
+        <div id="dronepath"></div>
+    </div>
+
+    <canvas id="renderCanvas"></canvas>
+    <div id="camera">
+        <h2>Snímky z kamery</h2>
+        <p id="chooselocationp">Vyberte lokaci ze seznamu...</p>
+        <a target="_blank"><img src=""></a>
+    </div>
+
+</body>
+</html>
